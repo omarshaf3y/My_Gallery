@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:login_project/widgets/log_out_and_upload_container.dart';
 import 'package:login_project/widgets/grid_view_widget.dart';
@@ -15,7 +17,7 @@ class GalleryPage extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(
-            height: 120,
+            height: 120, // Set the height to match AppBar
             child: Padding(
               padding: const EdgeInsets.only(left: 27, right: 27, top: 27),
               child: Row(
@@ -69,25 +71,28 @@ class GalleryPage extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                        child: AlertDialog(
-                          backgroundColor: Colors.transparent,
-                          contentPadding: EdgeInsets.zero,
-                          content: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.8,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const SizedBox(
-                                  height: 25,
-                                ),
-                                Container(
+                      return AlertDialog(
+                        contentPadding: EdgeInsets.zero,
+                        content: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const SizedBox(
+                                height: 25,
+                              ),
+                              BackdropFilter(
+                                filter: ImageFilter.blur(
+                                    sigmaX: 10.0, sigmaY: 10.0),
+                                child: Container(
                                   height: 65,
                                   width: 300,
                                   decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                    borderRadius: BorderRadius.circular(16.0),
+                                    color: const Color(0xffEFD8F9),
+                                    borderRadius: BorderRadius.circular(32.0),
+                                    border: Border.all(
+                                        width: 1.0,
+                                        color: const Color(0xffffffff)),
                                   ),
                                   child: Stack(
                                     children: [
@@ -121,56 +126,56 @@ class GalleryPage extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 30,
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Container(
+                                height: 65,
+                                width: 300,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffEBF6FF),
+                                  borderRadius: BorderRadius.circular(32),
+                                  border: Border.all(
+                                      width: 1.0,
+                                      color: const Color(0xffffffff)),
                                 ),
-                                Container(
-                                  height: 65,
-                                  width: 300,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xffEBF6FF),
-                                    borderRadius: BorderRadius.circular(16.0),
-                                  ),
-                                  child: Stack(
-                                    children: [
-                                      Transform.rotate(
-                                        angle: -13,
-                                        child: Image.asset(
-                                          'assets/icons/camera_icon.png',
-                                          fit: BoxFit.contain,
-                                        ),
+                                child: Stack(
+                                  children: [
+                                    Transform.rotate(
+                                      angle: -13,
+                                      child: Image.asset(
+                                        'assets/icons/camera_icon.png',
+                                        fit: BoxFit.contain,
                                       ),
-                                      const Positioned(
-                                        top: 18,
-                                        left: 120,
-                                        child: Text(
-                                          'Camera',
-                                          style: TextStyle(
-                                            fontFamily: 'Segoe UI',
-                                            fontSize: 27,
-                                            color: Color(0xff4a4a4a),
-                                            fontWeight: FontWeight.w700,
-                                            height: 2.185185185185185,
-                                          ),
-                                          textHeightBehavior:
-                                              TextHeightBehavior(
-                                                  applyHeightToFirstAscent:
-                                                      false),
-                                          textAlign: TextAlign.center,
-                                          softWrap: false,
+                                    ),
+                                    const Positioned(
+                                      top: 18,
+                                      left: 120,
+                                      child: Text(
+                                        'Camera',
+                                        style: TextStyle(
+                                          fontFamily: 'Segoe UI',
+                                          fontSize: 27,
+                                          color: Color(0xff4a4a4a),
+                                          fontWeight: FontWeight.w700,
+                                          height: 2.185185185185185,
                                         ),
-                                      )
-                                    ],
-                                  ),
+                                        textHeightBehavior: TextHeightBehavior(
+                                            applyHeightToFirstAscent: false),
+                                        textAlign: TextAlign.center,
+                                        softWrap: false,
+                                      ),
+                                    )
+                                  ],
                                 ),
-                                const SizedBox(
-                                    height:
-                                        16), // Adjust as per your requirement
-                              ],
-                            ),
+                              ),
+                              const SizedBox(
+                                  height: 16), // Adjust as per your requirement
+                            ],
                           ),
-                          actions: const <Widget>[],
                         ),
+                        actions: const <Widget>[],
                       );
                     },
                   );
@@ -196,3 +201,15 @@ class GalleryPage extends StatelessWidget {
     );
   }
 }
+// ClipRect(
+//     child: BackdropFilter(
+//       filter: ui.ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+//       child: Container(
+//         decoration: BoxDecoration(
+//           color: const Color(0x66ffffff),
+//           borderRadius: BorderRadius.circular(32.0),
+//           border: Border.all(width: 1.0, color: const Color(0xffffffff)),
+//         ),
+//       ),
+//     ),
+//   )
