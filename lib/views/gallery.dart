@@ -137,8 +137,9 @@ class GalleryPage extends StatelessWidget {
                                   color: const Color(0xffEBF6FF),
                                   borderRadius: BorderRadius.circular(32),
                                   border: Border.all(
-                                      width: 1.0,
-                                      color: const Color(0xffffffff)),
+                                    width: 1.0,
+                                    color: const Color(0xffffffff),
+                                  ),
                                 ),
                                 child: Stack(
                                   children: [
